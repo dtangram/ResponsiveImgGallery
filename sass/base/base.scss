@@ -57,14 +57,9 @@ ul {
   display: flex;
   flex-direction: column;
   @extend %center-element;
-  padding-bottom: 170px;
+  padding-bottom: 100px;
   position: relative;
   width: 1000px;
-
-  @include mq(mediumLarge){
-    display: block;
-    height: 2000px;
-  }
 
   @include mq(large){
     max-width: 100%;
@@ -152,24 +147,16 @@ section{
 
     @include mq(small){
       display: flex;
-      height: 130px;
+      flex-direction: column;
+      height: auto;
       margin-right: 0;
-      width: 100% !important;
-    }
-
-    @include mq(medium){
-      width: 48%;
+      width: 100%;
     }
 
     img{
       cursor: pointer;
       margin-bottom: 0;
       width: 100%;
-
-      @include mq(small){
-        height: 100%;
-        width: auto;
-      }
     }
 
     div{
