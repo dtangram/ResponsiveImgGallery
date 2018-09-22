@@ -1,0 +1,277 @@
+*{
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+	font-size: 62.5%;
+}
+
+body{
+	background: $colorWhite;
+	@include font($colorWhite, $fontFamily, $fontSize, $fontWeight);
+	position: relative;
+}
+
+
+
+/* TYPOGRAPHY ================================== */
+h1, h2{
+	font-weight: bold;
+	line-height: 1;
+}
+
+h1{
+  color: $colorCharcoal;
+  cursor: pointer;
+	font-size: 25px;
+  margin-bottom: 20px;
+}
+
+h2{
+  color: $colorCharcoal;
+	font-size: 20px;
+}
+
+h3{
+	@include font($color000, $fontFamily, $fontSize: 17px, $fontWeight: bold);
+  margin-bottom: 32px;
+}
+
+p{
+	color: $colorWhite;
+  font-size: .8em;
+}
+
+ul {
+  list-style: none;
+  margin: .5px 0;
+}
+
+
+
+/* BASE STRUCTURE =============================== */
+.container{
+  background: $colorWhite;
+  display: flex;
+  flex-direction: column;
+  @extend %center-element;
+  padding-bottom: 170px;
+  position: relative;
+  width: 1000px;
+
+  @include mq(mediumLarge){
+    display: block;
+    height: 2000px;
+  }
+
+  @include mq(large){
+    max-width: 100%;
+  }
+}
+
+
+
+/* HEADER ================================== */
+header{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  padding: 20px 9%;
+  text-align: center;
+	width: 100%;
+
+  @include mq(small){
+    width: 100%;
+  }
+
+  @include mq(medium){
+    background-position: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  /*LOGO*/
+  #globe{
+  	background: url(../img/globe.svg) no-repeat 0 0 / cover;
+    height: 50px;
+    @extend %center-element;
+    margin-bottom: 20px;
+    width: 50px;
+  }
+
+  .animate{
+    animation: globeRotate 10s linear infinite;
+  }
+
+  p{
+    color: $color000;
+    text-align: center;
+  }
+}
+
+
+
+section{
+  background: $colorWhite;
+  padding: 0 10%;
+  margin-bottom: 4%;
+
+  @include mq(small){
+    padding: 0 2%;
+
+    > :nth-child(odd){
+      margin-right: 0;
+    }
+  }
+
+  @include mq(medium){
+    padding-left: 2%;
+    padding-right: 2%;
+
+    > :nth-child(even){
+      margin-right: 0;
+    }
+  }
+
+  article{
+    display: inline-block;
+    height: 160px;
+    margin-bottom: 20px;
+    margin-right: 3%;
+    overflow: hidden;
+    width: 30%;
+
+    &:hover{
+      div{
+        transform: translateY(-80px);
+        opacity: 1;
+      }
+    }
+
+    @include mq(small){
+      display: flex;
+      height: 130px;
+      margin-right: 0;
+      width: 100% !important;
+    }
+
+    @include mq(medium){
+      width: 48%;
+    }
+
+    img{
+      cursor: pointer;
+      margin-bottom: 0;
+      width: 100%;
+
+      @include mq(small){
+        height: 100%;
+        width: auto;
+      }
+    }
+
+    div{
+      background: $colorCharcoal;
+      display: inline-block;
+      opacity: 0;
+      transition: 1s;
+      width: 100%;
+      z-index: 99;
+
+      img{
+        float: left;
+        margin-right: 5%;
+        width: 10%;
+      }
+
+      p{
+        background: $colorCharcoal;
+        text-transform: capitalize;
+        padding: 14px 5%;
+
+        @include mq(small){
+
+        }
+      }
+    }
+  }
+}
+
+
+
+/* FOOTER =============================== */
+footer{
+  bottom: 0;
+  position: absolute;
+  z-index: 3;
+  margin: 0 auto;
+	padding: 5%;
+  left: 0;
+  right: 0;
+
+  p{
+    color: $color000;
+    font-size: .8em;
+  	text-align: center;
+    @extend %center-element;
+    width: 60%;
+
+    @include mq(small){
+      width: 100%;
+    }
+
+    span{
+      color: $color-bbb;
+    }
+  }
+}
+
+
+
+.globeBounce{
+	position: relative;
+	-webkit-animation: bounce 1000ms ease-in-out infinite;
+	-moz-animation: bounce 1000ms ease-in-out infinite;
+	-o-animation: bounce 1000ms ease-in-out infinite;
+	animation: bounce 1000ms ease-in-out infinite;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+	-webkit-transform:translateY(0%);
+  }
+  50% {
+  	-webkit-transform:translateY(-50%);
+  }
+}
+
+/* Mozilla Firefox 15 below */
+@-moz-keyframes bounce {
+  0% {
+	-webkit-transform:translateY(0);
+  }
+  50% {
+  	-moz-transform:translateY(-50%);
+  }
+}
+
+/* Opera 12.0 */
+@-o-keyframes bounce {
+  0% {
+	-webkit-transform:translateY(-50%);
+  }
+  50% {
+  	-o-transform:translateY(-30%);
+  }
+  100% {
+  	-o-transform:translateY(0);
+  }
+}
+
+@keyframes globeRotate{
+  100%{transform: rotate(1turn);}
+}
