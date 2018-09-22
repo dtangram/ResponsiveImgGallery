@@ -61,6 +61,10 @@ ul {
   position: relative;
   width: 1000px;
 
+  @include mq(mediumLarge){
+    display: block;
+  }
+
   @include mq(large){
     max-width: 100%;
   }
@@ -145,9 +149,11 @@ section{
       }
     }
 
+    @include mq(medium){
+      width: 48%;
+    }
+
     @include mq(small){
-      display: flex;
-      flex-direction: column;
       height: auto;
       margin-right: 0;
       width: 100%;
